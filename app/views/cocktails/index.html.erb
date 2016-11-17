@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row">
-    <%= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
+  <div class="row col-sm-10 col-sm-offset-1 cocktails-container">
+    <h1>Bienvenue Dans le bendo</h1>
+    <p>Veuillez trouver ci-dessous la liste de nos Cocktails disponibles. N'hésitez pas à créer vos propres cocktails.</p>
     <table class="table table-hover text-left">
       <thead>
         <th><div>Cocktail Name</div></th>
@@ -8,8 +9,8 @@
       </thead>
       <tbody>
        <% @cocktails.each do |cocktail| %>
-        <tr>
-          <td><%= link_to cocktail.name, cocktail_path(cocktail) %></td>
+        <tr data-link="<%= cocktail_path(cocktail) %>">
+          <td><%= cocktail.name %></td>
           <td><%= cocktail.ingredients.count %></td>
         </tr>
         <% end %>
@@ -17,3 +18,10 @@
     </table>
   </div>
 </div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+  $("tr[data-link]").click(function() {
+     window.location = $(this).data("link")
+   });
+  <% end %>
+<% end %>

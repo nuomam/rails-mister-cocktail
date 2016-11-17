@@ -2,3 +2,15 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.cocktails-container {
+  margin-top: 50px;
+  border-radius: 3px;
+  background-color: #202020;
+  padding: 20px;
+  color: white;
+}
+
+.table-hover tbody tr:hover {
+  cursor: pointer;
+  color: black;
+}

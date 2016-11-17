@@ -5,13 +5,15 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href='assets/favicon.ico' rel="shortcut icon">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url(http://booze.html.themeforest.createit.pl/assets/images/demo-content/booze/slide1.jpg);">
     <%= render 'shared/navbar' %>
     <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:js) %>
   </body>
 </html>
