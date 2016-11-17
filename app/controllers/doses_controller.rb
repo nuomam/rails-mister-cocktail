@@ -1,4 +1,4 @@
-class DoseController < ApplicationController
+class DosesController < ApplicationController
   def new
   end
 
