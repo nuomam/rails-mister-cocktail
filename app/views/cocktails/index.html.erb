@@ -1,2 +1,17 @@
-<h1>Cocktail#index</h1>
-<p>Find me in app/views/cocktail/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
+    <table class="table table-hover">
+      <thead>
+        <th><div>Cocktail Name</div></th>
+      </thead>
+      <tbody>
+       <% @cocktails.each do |cocktail| %>
+        <tr>
+          <td><%= link_to cocktail.name, cocktail_path(cocktail) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
