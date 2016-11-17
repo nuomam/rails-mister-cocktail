@@ -1,6 +1,25 @@
 <div class="container">
   <div class="row">
     <h1><%= @cocktail.name %></h1>
+  <div class="row">
+    <table class="table table-hover text-left">
+      <thead>
+        <th>Ingredient name</th>
+        <th>Description</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td><%= dose.ingredient.name %></td>
+          <td><%= dose.description %></td>
+          <td><%= link_to "Delete", cocktail_dose_path(dose), method: :delete %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-info" %>
     <%= link_to "Back", cocktails_path, class: "btn btn-info" %>
   </div>
 </div>
