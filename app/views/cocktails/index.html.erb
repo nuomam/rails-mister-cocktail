@@ -20,6 +20,9 @@
 </div>
 <% content_for(:js) do %>
   <%= javascript_tag do %>
+    $("tr[data-link]").click(function() {
+     window.location = $(this).data("link")
+   });
     window.setTimeout(function() {
     $("#alert-warning").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();

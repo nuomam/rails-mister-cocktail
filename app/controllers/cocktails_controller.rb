@@ -10,7 +10,7 @@ class CocktailsController < ApplicationController
       @dose = Dose.new
       redirect_to cocktail_path(@cocktail)
     else
-      flash[:alert] = "Your cocktail isn't created. Please give a name to your new cocktail."
+      flash[:alert] = "Please give a name to your new cocktail :)."
       redirect_to cocktails_path
     end
   end
