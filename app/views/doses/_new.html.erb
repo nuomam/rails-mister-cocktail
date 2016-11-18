@@ -3,14 +3,22 @@
   <%= simple_form_for [@cocktail, @dose] do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-    <%= f.association :ingredient %>
+    <%= f.association :ingredient, :include_blank => true %>
     <%= f.input :description, placeholder: "Quantity ?" %>
     </div>
     <div class="form-actions">
-    <%= f.button :submit, id: "test" %>
+    <%= f.button :submit, id: "new_dose" %>
     </div>
-  <% end %>
+  <% end <%></%>
 <!--   </div>
 </div> -->
-
-
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#new_dose').attr("disabled", 'disabled');;
+      $('#new_dose').click(function(){
+        $('#new_dose').removeAttr(disabled)
+      });
+    });
+  <% end %>
+<% end %>

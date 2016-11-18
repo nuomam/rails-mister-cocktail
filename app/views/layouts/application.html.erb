@@ -11,9 +11,30 @@
   </head>
 
   <body style="background-image: url(http://booze.html.themeforest.createit.pl/assets/images/demo-content/booze/slide1.jpg);">
+
+    <%= render 'shared/create_cocktail' %>
     <%= render 'shared/navbar' %>
     <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield(:js) %>
+
+      <% if flash[:notice] %>
+    <div class="alert alert-info fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+      <div class="alert alert-warning alert-dismissible alert-fixed" id="alert-warning" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+
+     <%= render 'shared/flash' %>
+
+
   </body>
 </html>

@@ -18,14 +18,18 @@
           <tr>
             <td><%= dose.ingredient.name %></td>
             <td><%= dose.description %></td>
-
+            <td><%= link_to  %></td>
           </tr>
           <% end %>
         <% end %>
       </tbody>
     </table>
-  <div>
+    <div class="table-action">
+      <button data-toggle="collapse" data-target="#add-dose-form" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"></i> Add a dose</button>
+    </div>
   <hr>
+
+<div id="add-dose-form" class="collapse">
     <h4>Add a dose</h4>
     <%= simple_form_for [@cocktail, @dose] do |f| %>
       <%= f.error_notification %>
@@ -34,14 +38,23 @@
         <%= f.input :description, placeholder: "Quantity ?" %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, id: "test" %>
+        <%= f.button :submit, id: "new_dose" %>
       </div>
     <% end %>
-  </div>
-
+</div>
 
   </div>
 </div>
   </div>
     </div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#new_dose input').attr("disabled", true);
+      $('#dose_ingredient_id').change(function(){
+        $('#new_dose input').removeAttr('disabled');
+      });
 
+    });
+  <% end %>
+<% end %>

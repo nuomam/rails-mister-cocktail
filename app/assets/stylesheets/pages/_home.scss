@@ -14,3 +14,14 @@
   cursor: pointer;
   color: black;
 }
+
+.alert-fixed {
+    position: fixed;   /* Take it out of the flow of the document */
+    left: 0;           /* Left edge at left for now */
+    right: 0;          /* Right edge at right for now, so full width */
+    top: 30px;         /* Move it down from top of window */
+    width: 500px;      /* Give it the desired width */
+    margin: auto;      /* Center it */
+    max-width: 100%;   /* Make it fit window if under 500px */
+    z-index: 10000;    /* Whatever needed to force to front (1 might do) */
+}
