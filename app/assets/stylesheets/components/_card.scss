@@ -1,0 +1,42 @@
+/* Card design */
+.card {
+    height: 250px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    background-size: cover !important;
+    color: white;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.card-city {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+}
+
+.card-avatar {
+  position: absolute;
+  top : 10px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.card-link:hover {
+  background-color: #000;
+  opacity: 0.2;
+}

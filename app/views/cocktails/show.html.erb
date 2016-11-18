@@ -1,54 +1,66 @@
-<div class="container">
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 cocktails-container">
-    <h1><%= @cocktail.name %></h1>
-    <table class="table table-hover text-left">
-      <thead>
-        <th>Ingredient name</th>
-        <th>Description</th>
-        <th>Delete</th>
-      </thead>
-      <tbody>
-        <% if @cocktail.doses.length == 0 %>
-          <tr>
-            <td colspan="3">No doses exists, please add a new one.</td>
-          </tr>
-        <% else %>
-          <% @cocktail.doses.each do |dose| %>
-          <tr>
-            <td><%= dose.ingredient.name %></td>
-            <td><%= dose.description %></td>
-            <td>  <%= link_to dose_path(dose), method: :delete do %>
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                  <% end %>
-          </tr>
+<div class="background-bendo">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 cocktails-container">
+      <div>
+      <div  class="text-center"><h2><%= @cocktail.name %></h2>
+          <% if @cocktail.photo? %>
+          <%= cl_image_tag @cocktail.photo.path, width: 300, height: 200, crop: :fill %>
+          <% else %>
+            <p>lol</p>
+          <% end %></div>
+      <%= link_to cocktails_path do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Cocktails list
+      <% end %>
+      </div>
+      <div class="right-content">
+      <table class="table text-left">
+        <thead>
+          <th>Ingredient name</th>
+          <th>Description</th>
+          <th>Delete</th>
+        </thead>
+        <tbody>
+          <% if @cocktail.doses.length == 0 %>
+            <tr>
+              <td colspan="3">No doses exists, please add a new one.</td>
+            </tr>
+          <% else %>
+            <% @cocktail.doses.each do |dose| %>
+            <tr>
+              <td><%= dose.ingredient.name %></td>
+              <td><%= dose.description %></td>
+              <td>  <%= link_to dose_path(dose), method: :delete do %>
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    <% end %></td>
+            </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="table-action">
-      <button data-toggle="collapse" data-target="#add-dose-form" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"></i> Add a dose</button>
-    </div>
-  <hr>
-
-<div id="add-dose-form" class="collapse">
-    <h4>Add a dose</h4>
-    <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <%= f.association :ingredient, collection: Ingredient.order(:name) %>
-        <%= f.input :description, placeholder: "Quantity ?" %>
+        </tbody>
+      </table>
+      <div class="table-action">
+        <button data-toggle="collapse" data-target="#add-dose-form" class="btn btn-primary"><i class="fa fa-plus-square" aria-hidden="true"></i> Add a dose</button>
       </div>
-      <div class="form-actions">
-        <%= f.button :submit, id: "new_dose" %>
-      </div>
-    <% end %>
-</div>
+    <hr>
 
+  <div id="add-dose-form" class="collapse">
+      <h4>Add a dose</h4>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.association :ingredient, collection: Ingredient.order(:name) %>
+          <%= f.input :description, placeholder: "Quantity ?" %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, id: "new_dose" %>
+        </div>
+      <% end %>
   </div>
-</div>
   </div>
+      </div>
     </div>
+      </div>
+</div>
 <% content_for(:js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {

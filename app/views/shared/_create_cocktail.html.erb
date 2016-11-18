@@ -8,6 +8,7 @@
       <div class="modal-body">
             <%= simple_form_for @cocktail_new do |f| %>
             <%= f.input :name, placeholder: "Your cocktail name" %>
+            <%= f.input :photo, as: :attachinary %>
             <%= f.button :submit %>
           <% end %>
       </div>

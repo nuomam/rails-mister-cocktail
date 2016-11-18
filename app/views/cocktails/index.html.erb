@@ -1,22 +1,30 @@
-<div class="container">
-  <div class="row col-sm-10 col-sm-offset-1 cocktails-container">
-    <h1>Bienvenue Dans le bendo</h1>
-    <p>Veuillez trouver ci-dessous la liste de nos Cocktails disponibles. N'hésitez pas à créer vos propres cocktails.</p>
-    <table class="table table-hover text-left">
-      <thead>
-        <th><div>Cocktail Name</div></th>
-        <th><div>Ingredients needed</div></th>
-      </thead>
-      <tbody>
-       <% @cocktails.each do |cocktail| %>
-        <tr data-link="<%= cocktail_path(cocktail) %>">
-          <td><%= cocktail.name %></td>
-          <td><%= cocktail.ingredients.count %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<div class="background-bendo">
+    <div class="row cocktails-container-index">
+
+      <div class="container">
+            <h1><%= @cocktails.length %> cocktails available</h1>
+
+        <div class="row">
+            <% @cocktails.each do |cocktail| %>
+              <div class="col-xs-12 col-sm-4">
+                <% if cocktail.photo? %>
+                  <div class="card" style="background-image: url('<%= cl_image_path cocktail.photo.path, height: 300, width: 400, crop: :fill; %>');">
+                <% else %>
+                  <div class="card" style="background-image: url('http://placehod.it/300x400');">
+                <% end %>
+                  <div class="card-description">
+                    <h2><%= cocktail.name %></h2>
+                    <p><%= cocktail.doses.length %> dose(s) needed</p>
+                  </div>
+                  <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+</div>
+    </div>
+    </div>
+
 </div>
 <% content_for(:js) do %>
   <%= javascript_tag do %>

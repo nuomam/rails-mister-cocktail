@@ -5,9 +5,22 @@
 .cocktails-container {
   margin-top: 50px;
   border-radius: 3px;
-  background-color: #202020;
+  background-color: rgba(128,128,128, 0.5);
   padding: 20px;
   color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+}
+
+.cocktails-container-index {
+  margin-top: 50px;
+  border-radius: 3px;
+  background-color: rgba(128,128,128, 0.5);
+  padding: 20px;
+  color: white;
+    height: 100vh;
 }
 
 .table-hover tbody tr:hover {
@@ -24,4 +37,15 @@
     margin: auto;      /* Center it */
     max-width: 100%;   /* Make it fit window if under 500px */
     z-index: 10000;    /* Whatever needed to force to front (1 might do) */
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.right-content {
+  width: 500px;
 }

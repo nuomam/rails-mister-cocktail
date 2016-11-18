@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'cocktails#index'
+  root 'pages#home'
+  mount Attachinary::Engine => "/attachinary"
   resources :cocktails, only: [ :index, :new, :create, :show ] do
     resources :doses, only: [ :new, :create ]
   end
